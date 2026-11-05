@@ -1,74 +1,72 @@
-# Instagram Audit — a free Claude skill
+# Audit Your Instagram for Free
 
-Score your Instagram business profile out of 100 and get five prioritized fixes, in about five minutes.
+A Claude skill that scores your Instagram business profile out of 100 and hands you five fixes, ranked by impact.
 
-No API keys, no account connection, no signup. You paste your bio and send two screenshots of your own Instagram Insights; Claude does the scoring. Everything stays in your Claude conversation.
+**Want a report now?** Run an instant audit at [tryposty.net](https://tryposty.net). TryPosty connects to your account and scores it in about a minute.
 
----
+## How it scores
 
-## What it scores
-
-| Category | Points | What it looks at |
+| Category | Points | Checks |
 |---|---|---|
-| Engagement performance | 35 | Interaction rate against reach, trend vs last month, saves and shares, spread across posts |
-| Posting consistency | 25 | How often you post, how recently, and how evenly |
-| Profile optimization | 20 | Bio, link, call to action, profile photo, searchable name |
-| Account growth | 15 | Follower growth, reach trend, follows per account reached |
-| Content format mix | 5 | Reels, carousels and images — variety, not subject matter |
+| Engagement | 35 | Interaction rate on reach, monthly trend, saves and shares, spread across posts |
+| Posting consistency | 25 | Frequency, recency, evenness of spacing |
+| Profile | 20 | Bio, link, call to action, photo, searchable name |
+| Growth | 15 | Follower growth, reach trend, follows per account reached |
+| Format mix | 5 | Reels, carousels and images |
 
-It scores only what you give it. Skip the screenshots and you still get a profile and consistency audit, with the score reported out of what was actually assessed — never a zero for data that was simply missing.
+The skill scores the data it can see. Skip a step and you get a partial score, reported out of the points it assessed. Missing data never counts as zero.
+
+## Two ways to feed it data
+
+**Live, through Composio.** Connect your Instagram Business or Creator account to [Composio](https://composio.dev) and Claude pulls 90 days of posts and 30 days of Insights straight from Instagram's API. You paste your bio, and the API supplies the rest. Use this path for the most accurate score.
+
+**By hand, with screenshots.** Paste your bio and link, list the dates of your last 12 posts, and send two screenshots from Instagram Insights. Takes about five minutes.
+
+| You send | Unlocks |
+|---|---|
+| Handle, bio, link in bio, display name | Profile, 20 points |
+| Dates and formats of your last 12 posts | Consistency and format mix, 30 points |
+| Insights screenshots: 30-day Overview and Followers | Engagement and growth, 50 points |
+
+Find Insights in the Instagram app under your profile, then Professional dashboard, then Insights. Set the range to the last 30 days and keep the "vs previous 30 days" figures in frame.
 
 ## Install
 
-**Claude apps (web, desktop, mobile)** — download `instagram-audit.zip` from the [latest release](../../releases/latest), then go to Settings → Capabilities → Skills → Upload skill and select the zip.
+**Claude apps.** Download `instagram-audit.zip` from the [latest release](../../releases/latest). In Claude, open Settings, then Capabilities, then Skills, and upload the zip.
 
-**Claude Code** — clone into your skills directory:
+**Claude Code.**
 
 ```bash
 git clone https://github.com/TryPosty/Audit-Your-Instagram-For-Free.git ~/.claude/skills/instagram-audit
 ```
 
-Then start a conversation with:
+Then ask Claude: "Audit my Instagram."
 
-> Audit my Instagram
+## Requirements
 
-## What you'll need
+You need a Business or Creator account for Insights and for the Composio connection. Switching from a personal account costs nothing in Instagram's settings. Personal accounts still get the profile and consistency scores.
 
-**Takes one minute — gets you the profile score (20 points)**
-Your handle, your bio text, your link in bio, your display name.
-
-**Takes three more minutes — adds consistency and format mix (30 points)**
-The date and format of your last 12 posts. Screenshot your profile grid if that's easier.
-
-**Takes three more minutes — adds engagement and growth (50 points)**
-Two screenshots from the Instagram app:
-
-1. Your profile → **Professional dashboard** → **Insights** → set range to **Last 30 days**
-2. The same Insights area → **Followers**
-
-Make sure the "vs previous 30 days" percentages are visible — several checks read them directly.
-
-You need a professional account (Business or Creator) for the Insights screens. Switching is free and takes a minute in Instagram's settings. A personal account can still get the profile and consistency scores.
+Instagram withholds follower data from accounts under 100 followers, so the skill marks those growth checks as not assessed.
 
 ## Privacy
 
-The skill runs entirely inside your Claude conversation. It sends nothing to any server, calls no API, and stores nothing. Your screenshots are handled by Claude under whatever terms already apply to your account — there is no third party in the loop, including us.
+On the screenshot path, your data stays in your Claude conversation. On the Composio path, Composio holds the access token you grant and you can revoke it from your Composio dashboard or Instagram's settings. The skill sends nothing to TryPosty. It never scrapes Instagram.
 
-The skill will not scrape Instagram. It asks you for what it needs.
+## Limits
 
-## What it won't do
+The skill covers organic posts on one profile. It skips ads, paid reach and competitor comparison, and it won't tell you to post daily if you can manage twice a week.
 
-- Audit ads or paid reach
-- Compare you to competitors
-- Guess at a metric you didn't give it
-- Tell you to post five times a day if you've said you can manage two
+## Files
 
-## Built by
+```
+SKILL.md                         entry point Claude loads
+references/scoring-rubric.md     point tables for all 17 checks
+references/report-template.md    report layout and tone
+references/composio-source.md    API calls for the live-data path
+```
 
-Built and maintained by [TryPosty](https://tryposty.net), which automates this same scoring against the Instagram API so you don't have to take screenshots every month. The skill is free, open source, and works perfectly well without us.
+## Contributing
 
-Found a check that scores wrong? [Open an issue](../../issues) — the rubric is in `references/scoring-rubric.md` and pull requests are welcome.
+Spot a check that scores wrong? [Open an issue](../../issues). Pull requests on the rubric are welcome.
 
-## License
-
-MIT. Fork it, change the thresholds, ship it inside your own product.
+Built by [TryPosty](https://tryposty.net). MIT licensed.

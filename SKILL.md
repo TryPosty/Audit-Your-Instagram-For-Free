@@ -9,6 +9,8 @@ Score an Instagram business or creator profile out of 100 across five categories
 
 Read `references/scoring-rubric.md` for the point tables before scoring. Read `references/report-template.md` for the output format before writing the report.
 
+**If Composio's Instagram tools are available, use live data.** Read `references/composio-source.md` and pull the account's data through the API. That replaces screenshots for Tiers B and C. Fall back to screenshots when no connection exists or a call fails.
+
 ## Four rules that make this audit trustworthy
 
 **1. Never invent a metric.** If the person has not given you a number, that check is *not assessed* and its points leave the denominator. Do not estimate reach, infer engagement from follower count, guess at follower growth, or fill a gap with a typical value for their industry.
@@ -20,6 +22,9 @@ Read `references/scoring-rubric.md` for the point tables before scoring. Read `r
 **4. Do not scrape Instagram.** Ask the person for what you need. If you have web browsing and they give you a public handle, you may look at their public profile page — but treat anything you cannot verify from it as not assessed.
 
 ## Step 1 — Collect what you can
+
+With a live Composio connection, run the calls in `references/composio-source.md` and skip to Step 2. Ask the person to paste their bio and link in bio: Composio's user-info action returns the handle, name, photo and counts, but not the bio or website.
+
 
 Show the person this table, then work with whatever they give you. Do not refuse to start because they only have Tier A.
 
